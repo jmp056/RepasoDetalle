@@ -38,6 +38,12 @@ namespace Entidades.Tests
             Assert.IsTrue(repositorio.Modificar(articulo));
         }
 
-
+        [TestMethod()]
+        public void Eliminar()
+        {
+            RepositorioBase<Articulos> repositorio;
+            repositorio = new RepositorioBase<Articulos>();
+            Assert.IsTrue(repositorio.Eliminar(1));
+        }
     }
 }
