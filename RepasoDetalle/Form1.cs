@@ -1,5 +1,5 @@
 ﻿using DAL;
-using entidades;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,9 +24,9 @@ namespace RepasoDetalle
     }
 }
 
-namespace entidades
+namespace Entidades
 {
-    public class Ariticulos
+    public class Articulos
     {
         [Key]
         public int ArticuloId { get; set; }
@@ -34,7 +34,7 @@ namespace entidades
         public double Existencia { get; set; }
         public double Precio { get; set; }
 
-        public Ariticulos()
+        public Articulos()
         {
             ArticuloId = 0;
             Descripcion = string.Empty;
@@ -80,6 +80,7 @@ namespace DAL
     public class Contexto : DbContext
     {
         public DbSet<Pedidos> Pedidos { get; set; }
+        public DbSet<Articulos> Articulos { get; set; }
         public Contexto() : base(@"Data Source=.\SqlExpress;Initial Catalog = RepasoDb; Integrated Security = True")
         {
 
