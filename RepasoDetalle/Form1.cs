@@ -125,5 +125,24 @@ namespace BLL
             }
             return paso;
         }
+
+        public virtual bool Modificar(T entity)
+        {
+            bool paso = false;
+            try
+            {
+                _contexto.Entry(entity).State = EntityState.Modified;
+                paso = _contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Dispose();
+            }
+            return paso;
+        }
     }
 }
