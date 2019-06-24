@@ -21,5 +21,20 @@ namespace RepasoDetalle
 
 namespace entidades
 {
+    public class Ariticulos
+    {
+        [Key]
+        public int ArticuloId { get; set; }
+        public string Descripcion { get; set; }
+        public double Existencia { get; set; }
+        public double Precio { get; set; }
 
+        public Ariticulos()
+        {
+            ArticuloId = 0;
+            Descripcion = string.Empty;
+            Existencia = 0;
+            Precio = 0;
+        }
+    }
 }
