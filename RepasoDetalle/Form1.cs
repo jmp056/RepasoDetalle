@@ -1,8 +1,10 @@
-﻿using System;
+﻿using entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -73,5 +75,12 @@ namespace entidades
 
 namespace DAL
 {
-    
+    public class Contexto : DbContext
+    {
+        public DbSet<Pedidos> Pedidos { get; set; }
+        public Contexto() : base(@"Data Source=.\SqlExpress;Initial Catalog = RepasoDb; Integrated Security = True")
+        {
+
+        }
+    }
 }
