@@ -84,3 +84,8 @@ namespace DAL
         }
     }
 }
+
+namespace BLL
+{
+
+}
