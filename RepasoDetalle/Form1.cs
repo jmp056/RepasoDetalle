@@ -144,5 +144,26 @@ namespace BLL
             }
             return paso;
         }
+
+        public virtual bool Eliminar(int id)
+        {
+            bool paso = false;
+            try
+            {
+                T entity = _contexto.Set<T>().Find(id);
+                _contexto.Set<T>().Remove(entity);
+                paso = _contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Dispose();
+            }
+            return paso;
+        }
+
     }
 }
