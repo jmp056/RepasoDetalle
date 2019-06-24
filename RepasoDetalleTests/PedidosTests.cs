@@ -52,5 +52,14 @@ namespace Entidades.Tests
             Assert.IsNotNull(repositorio.Buscar(1));
         }
 
+        [TestMethod()]
+        public void GetList()
+        {
+            RepositorioBase<Pedidos> repositorio;
+            repositorio = new RepositorioBase<Pedidos>();
+            List<Pedidos> lista = new List<Pedidos>();
+            lista = repositorio.GetList(p => true);
+            Assert.IsNotNull(lista);
+        }
     }
 }
