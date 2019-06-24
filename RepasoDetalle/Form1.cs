@@ -106,5 +106,24 @@ namespace BLL
         {
             _contexto = new Contexto();
         }
+
+        public virtual bool Guardar(T entity)
+        {
+            bool paso = false;
+            try
+            {
+                if (_contexto.Set<T>().Add(entity) != null)
+                    paso = _contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Dispose();
+            }
+            return paso;
+        }
     }
 }
