@@ -23,5 +23,19 @@ namespace Entidades.Tests
             pedido.Monto = 2;
             Assert.IsTrue(repositorio.Guardar(pedido));
         }
+
+        [TestMethod()]
+        public void Modificar()
+        {
+            RepositorioBase<Pedidos> repositorio;
+            repositorio = new RepositorioBase<Pedidos>();
+            Pedidos pedido = new Pedidos();
+            pedido.PedidoId = 1;
+            pedido.Fecha = DateTime.Now;
+            pedido.Monto = 1;
+            Assert.IsTrue(repositorio.Guardar(pedido));
+        }
+
+        
     }
 }
