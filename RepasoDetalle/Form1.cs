@@ -70,3 +70,8 @@ namespace entidades
         }
     }
 }
+
+namespace DAL
+{
+    
+}
