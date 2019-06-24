@@ -18,3 +18,8 @@ namespace RepasoDetalle
         }
     }
 }
+
+namespace entidades
+{
+
+}
