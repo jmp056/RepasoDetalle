@@ -36,6 +36,14 @@ namespace Entidades.Tests
             Assert.IsTrue(repositorio.Guardar(pedido));
         }
 
+        [TestMethod()]
+        public void Eliminar()
+        {
+            RepositorioBase<Pedidos> repositorio;
+            repositorio = new RepositorioBase<Pedidos>();
+            Assert.IsTrue(repositorio.Eliminar(1));
+        }
+
         
     }
 }
