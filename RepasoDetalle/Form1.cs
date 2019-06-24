@@ -53,4 +53,20 @@ namespace entidades
             Monto = 0;
         }
     }
+    public class PedidosDetalle
+    {
+        [Key]
+        public int PedidoDetalleId { get; set; }
+        public int PedidoId { get; set; }
+        public int ArticuloId { get; set; }
+        public double Cantidad { get; set; }
+        public double Precio { get; set; }
+
+        public PedidosDetalle(int articuloId, int cantidad, double precio)
+        {
+            ArticuloId = articuloId;
+            Cantidad = cantidad;
+            Precio = precio;
+        }
+    }
 }
