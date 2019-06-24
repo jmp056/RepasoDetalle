@@ -45,5 +45,13 @@ namespace Entidades.Tests
             repositorio = new RepositorioBase<Articulos>();
             Assert.IsTrue(repositorio.Eliminar(1));
         }
+
+        [TestMethod()]
+        public void Buscar()
+        {
+            RepositorioBase<Articulos> repositorio;
+            repositorio = new RepositorioBase<Articulos>();
+            Assert.IsNotNull(repositorio.Buscar(1));
+        }
     }
 }
