@@ -1,4 +1,5 @@
-﻿using entidades;
+﻿using DAL;
+using entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -95,5 +96,15 @@ namespace BLL
         bool Guardar(T entity);
         bool Modificar(T entity);
         bool Eliminar(int id);
+    }
+
+    public class RepositorioBase<T> : IDisposable, IRepository<T> where T : class
+    {
+        internal Contexto _contexto;
+
+        public RepositorioBase()
+        {
+            _contexto = new Contexto();
+        }
     }
 }
