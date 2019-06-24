@@ -183,5 +183,24 @@ namespace BLL
             }
             return entity;
         }
+
+        public virtual List<T> GetList(Expression<Func<T, bool>> expression)
+        {
+            List<T> Lista = new List<T>();
+            try
+            {
+                Lista = _contexto.Set<T>().Where(expression).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Dispose();
+            }
+            return Lista;
+        }
+
     }
 }
