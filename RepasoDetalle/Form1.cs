@@ -165,5 +165,23 @@ namespace BLL
             return paso;
         }
 
+
+        public virtual T Buscar(int id)
+        {
+            T entity;
+            try
+            {
+                entity = _contexto.Set<T>().Find(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Dispose();
+            }
+            return entity;
+        }
     }
 }
