@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -87,5 +88,12 @@ namespace DAL
 
 namespace BLL
 {
-
+    public interface IRepository<T> where T : class
+    {
+        List<T> GetList(Expression<Func<T, bool>> expression);
+        T Buscar(int id);
+        bool Guardar(T entity);
+        bool Modificar(T entity);
+        bool Eliminar(int id);
+    }
 }
