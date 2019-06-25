@@ -2,15 +2,12 @@
 using Entidades;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Data.Entity;
-using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RepasoDetalle
@@ -63,6 +60,9 @@ namespace Entidades
         public int PedidoDetalleId { get; set; }
         public int PedidoId { get; set; }
         public int ArticuloId { get; set; }
+
+        [ForeignKey("ArticuloId")]
+        public virtual Articulos articulo { get; set; }
         public double Cantidad { get; set; }
         public double Precio { get; set; }
 
@@ -81,7 +81,7 @@ namespace DAL
     {
         public DbSet<Pedidos> Pedidos { get; set; }
         public DbSet<Articulos> Articulos { get; set; }
-        public Contexto() : base(@"Data Source=.\SqlExpress;Initial Catalog = RepasoDb; Integrated Security = True")
+        public Contexto() : base(@"Data Source=.\SqlExpress;Initial Catalog = RepasoDetalleDb; Integrated Security = True")
         {
 
         }
