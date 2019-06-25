@@ -47,11 +47,14 @@ namespace Entidades
         public DateTime Fecha { get; set; }
         public double Monto { get; set; }
 
+        public List<PedidosDetalle> Detalle { get; set; }
+
         public Pedidos()
         {
             PedidoId = 0;
             Fecha = DateTime.Now;
             Monto = 0;
+            this.Detalle = new List<PedidosDetalle>();
         }
     }
     public class PedidosDetalle
@@ -62,13 +65,19 @@ namespace Entidades
         public int ArticuloId { get; set; }
 
         [ForeignKey("ArticuloId")]
-        public virtual Articulos articulo { get; set; }
+        public virtual Articulos Articulo { get; set; }
         public double Cantidad { get; set; }
         public double Precio { get; set; }
 
-        public PedidosDetalle(int articuloId, int cantidad, double precio)
+        public PedidosDetalle()
+        {
+
+        }
+
+        public PedidosDetalle(int articuloId, Articulos articulo, double cantidad, double precio)
         {
             ArticuloId = articuloId;
+            Articulo = articulo;
             Cantidad = cantidad;
             Precio = precio;
         }
@@ -206,6 +215,36 @@ namespace BLL
         public void Dispose()
         {
             _contexto.Dispose();
+        }
+    }
+
+    public class PedidosBll
+    {
+        public static bool Guardar(Pedidos pedido)
+        {
+            bool paso = false;
+
+            Contexto contexto = new Contexto();
+            try
+            {
+                if (contexto.Pedidos.Add(pedido) != null)
+                {
+                    foreach (var item in pedido.Detalle)
+                    {
+                        contexto.Articulos.Find(item.ArticuloId).Existencia -= item.Cantidad;
+                    }
+
+                    contexto.SaveChanges(); //Guardar los cambios
+                    paso = true;
+                }
+                //siempre hay que cerrar la conexion
+                contexto.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return paso;
         }
     }
 }

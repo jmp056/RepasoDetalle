@@ -17,9 +17,8 @@ namespace Entidades.Tests
         {
             RepositorioBase<Articulos> repositorio;
             repositorio = new RepositorioBase<Articulos>();
-            Articulos articulo = new Articulos();
-            articulo.ArticuloId = 1;
-            articulo.Descripcion = "Intel Core I5 5tg Gen";
+            Articulos articulo = new Articulos(); 
+            articulo.Descripcion =$"Intel Core I5 5tg Gen {DateTime.Now.ToFileTime()}";
             articulo.Existencia = 1;
             articulo.Precio = 1;
             Assert.IsTrue(repositorio.Guardar(articulo));

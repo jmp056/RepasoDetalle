@@ -21,6 +21,35 @@ namespace Entidades.Tests
         }
 
         [TestMethod()]
+        public void GuardarSinRepositorio()
+        {
+         
+
+            Pedidos pedido = new Pedidos();
+            pedido.PedidoId = 1;
+            pedido.Fecha = DateTime.Now;
+            pedido.Monto = 2;
+
+            pedido.Detalle.Add(new PedidosDetalle()
+            {
+                ArticuloId = 1,
+                Cantidad = 5,
+                Precio = 1000
+            }
+            );
+
+            pedido.Detalle.Add(new PedidosDetalle()
+            {
+                ArticuloId = 2,
+                Cantidad = 1.5,
+                Precio = 199.99
+            }
+            );
+
+            Assert.IsTrue(PedidosBll.Guardar(pedido));
+        }
+
+        [TestMethod()]
         public void Modificar()
         {
             RepositorioBase<Pedidos> repositorio;
